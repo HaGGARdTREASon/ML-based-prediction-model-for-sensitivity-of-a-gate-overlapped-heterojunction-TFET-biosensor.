@@ -115,8 +115,6 @@ Inverse Transformation: Predicted outputs are scaled back to original physical u
 
 $$y = \hat{y} \cdot (y_{\max} - y_{\min}) + y_{\min}$$
 
-<img width="800" height="385" alt="image" src="https://github.com/user-attachments/assets/31500d96-429b-4f4b-9170-827a2e8873fe" />
-
 
 
 *Formal Evaluation Metrics*
