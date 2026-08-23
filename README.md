@@ -18,7 +18,8 @@ By replacing computationally intensive Technology Computer-Aided Design (TCAD) n
 
 The proposed biosensor incorporates a Germanium–Silicon ($\text{Ge}$–$\text{Si}$) heterojunction with a $100\text{ nm}$ gate overlap on the source to promote line-tunneling transport perpendicular to the gate interface.
 
-<img width="745" height="521" alt="image" src="https://github.com/user-attachments/assets/380dce36-1667-4cd7-a335-df90de91e8d5" />
+<img width="927" height="625" alt="Screenshot 2026-08-23 231657" src="https://github.com/user-attachments/assets/4bfd0aff-55f0-4595-9fba-1256aaa17a81" />
+
 
 Source Region: Heavily doped $\text{p}^+$ Germanium ($N_A = 1 \times 10^{20}\text{ cm}^{-3}$), $L_s = 200\text{ nm}$
 
@@ -34,21 +35,8 @@ Sensing Cavity: Dual dielectric-modulated cavities with nominal $90\%$ fill frac
 
 Phase 1 evaluates device response when sweeping Cavity Height ($H_{\text{cavity}}$) across four realistic non-uniform biomolecule spatial distributions:
 
-       CONCAVE                       CONVEX
-+-------------------+         +-------------------+
-|  air  | air | air |         |     | air |       |
-|----+--+-----+-----|         |-----+-----+-------|
-|Bio |  |     | Bio |         |     |Bio  |       |
-|    |  |     |     |         | Bio |     | Bio   |
-+-------------------+         +-------------------+
+<img width="447" height="384" alt="image" src="https://github.com/user-attachments/assets/9b280189-6fa5-46c5-bf24-60bbaf4168d0" />
 
-       RAMP-UP                      RAMP-DOWN
-+-------------------+         +-------------------+
-| air |             |         |             | air |
-|-----+-----+-------|         |-------+-----+-----|
-|     | Bio |       |         |       | Bio |     |
-|     |     | Bio   |         | Bio   |     |     |
-+-------------------+         +-------------------+
 
 
 
@@ -119,25 +107,25 @@ To ensure statistical validity and prevent data leakage, raw dataset processing 
                                    |
                                    v
 +-----------------------------------------------------------------------+
-|             Stage 3: Zero-Leakage Feature & Target Scaling             |
+|             Stage 3: Zero-Leakage Feature & Target Scaling            |
 |  - Fit MinMaxScaler strictly on Training Partition (X_{\text{train}}) |
-|  - Compute y_{\min} and y_{\max} from Training Targets (y_{\text{train}})|
+|  - Compute ymin and ymax from Training Targets ytexttrain}            |
 |  - Scale Training and Testing sets independently                      |
 +-----------------------------------------------------------------------+
                                    |
                                    v
 +-----------------------------------------------------------------------+
 |         Stage 4: Inverse Transformation & Metric Evaluation           |
-|  - Map predictions back: y_{\text{pred}} = \hat{\hat{y}} \cdot         |
+|  - Map predictions back: y_{\text{pred}} = \hat{\hat{y}} \cdot        |
 |    (y_{\max} - y_{\min}) + y_{\min}                                   |
 |  - Calculate R^2, MSE, RMSE, MAE, and Physical Accuracy %             |
 +-----------------------------------------------------------------------+
 
 
 
-Normalization and Inverse Formulations
+**Normalization and Inverse Formulations**
 
-Min-Max Feature & Target Normalization:
+*Min-Max Feature & Target Normalization:*
 
 $$\hat{y}_i = \frac{y_i - y_{\min}}{y_{\max} - y_{\min}}$$
 
@@ -167,9 +155,9 @@ Physical Accuracy Metric (%):
 
 $$\text{Accuracy (\%)} = \left( 1 - \frac{1}{n} \sum_{i=1}^{n} \frac{\vert y_i - y_{\text{pred}, i} \vert}{y_i} \right) \times 100$$
 
-Experimental Benchmarks & Results
+**Experimental Benchmarks & Results**
 
-1. Algorithm Benchmarking Comparison ($80:20$ Train-Test Split)
+*1. Algorithm Benchmarking Comparison ($80:20$ Train-Test Split)*
 
 |
 
@@ -180,7 +168,7 @@ Experimental Benchmarks & Results
 | Gradient Boosting Regression (GBR) | $0.999967$ | $3.0 \times 10^{-6}$ | $1.699 \times 10^{-3}$ | $1.283 \times 10^{-3}$ | $99.6983\%$ |
 | Support Vector Regression (SVR) | $0.999527$ | $4.2 \times 10^{-5}$ | $6.452 \times 10^{-3}$ | $5.474 \times 10^{-3}$ | $98.2628\%$ |
 
-2. Phase 2 RFR Performance Across Train-Test Split Ratios (Concave Profile)
+*2. Phase 2 RFR Performance Across Train-Test Split Ratios (Concave Profile)*
 
 | Train : Test Ratio | MAE | R2 Score | MSE | Physical Accuracy (%) |
 | 50 : 50 | $2.3490 \times 10^{-4}$ | $0.999996$ | $3.6 \times 10^{-7}$ | $99.9534\%$ |
@@ -189,46 +177,26 @@ Experimental Benchmarks & Results
 | 80 : 20 | $1.7327 \times 10^{-4}$ | 0.999997 | $2.8 \times 10^{-7}$ | 99.9683% |
 | 90 : 10 | $1.5788 \times 10^{-4}$ | $0.999997$ | $2.5 \times 10^{-7}$ | $99.9720\%$ |
 
-3. Computational Speedup & Overhead Reduction
+*3. Computational Speedup & Overhead Reduction*
 
 | Execution Phase | TCAD Simulation (Silvaco ATLAS) | Machine Learning Framework (RFR) | Speedup / Acceleration |
 | Dataset Generation ($50\text{k}$ Runs) | $\sim 120\text{ CPU Hours}$ | N/A (Offline baseline) | — |
 | Single-Point Inference | $\sim 8.5\text{ Minutes}$ per point | $< 0.001\text{ s}$ | $> 500{,}000\times$ Speedup |
 | Full Parameter Sweep | $\sim 48\text{ Hours}$ | $\sim 1.2\text{ s}$ | $\sim 99.99\%$ Overhead Reduction |
 
-Repository Structure
+**Repository Structure**
 
-├── docs/
-│   └── sequential_data_preprocessing_pipeline.md  # Detailed data pipeline specification
-├── logs/
-│   └── pipeline_execution.log                     # Pipeline execution verification log
-├── monte_carlo_runner/
-│   ├── batch_generator.py                         # Silvaco ATLAS MC input deck generator
-│   └── extract_sensitivity.py                     # Output logs parser for S_Ion & S_Vth
-├── notebooks/
-│   ├── 01_phase1_profile_screening.ipynb          # Profile screening & H_cavity variations
-│   ├── 02_phase1_model_benchmarking.ipynb         # RFR vs GBR vs XGBR vs KNN vs SVR
-│   └── 03_phase2_concave_rfr_analysis.ipynb       # L_cavity & T_si process variability
-├── src/
-│   ├── preprocessing_pipeline.py                  # Zero-leakage 4-stage preprocessing class
-│   ├── models.py                                  # Machine learning surrogates & RFR setup
-│   ├── metrics.py                                 # Statistical error & physical accuracy metrics
-│   └── visualization.py                           # Tolerance-filtered overlay plotting scripts
-├── jsr_research_paper_phase1_phase2.md            # Complete integrated research paper draft
-├── requirements.txt                               # Environment dependencies specification
-└── README.md                                      # Unified project documentation
+<img width="816" height="480" alt="image" src="https://github.com/user-attachments/assets/6b720f82-ba54-41e0-a022-206cd5cc67d6" />
 
+**Setup & Execution Guide**
 
-
-Setup & Execution Guide
-
-Prerequisites
+*Prerequisites*
 
 Python 3.8+
 
 Silvaco ATLAS TCAD (v5.20.0.R or higher) (Optional: required only for generating raw TCAD deck datasets)
 
-Installation
+*Installation*
 
 Clone the repository and install required packages:
 
