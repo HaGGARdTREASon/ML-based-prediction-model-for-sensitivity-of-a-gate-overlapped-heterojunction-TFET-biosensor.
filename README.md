@@ -8,26 +8,8 @@ By replacing computationally intensive Technology Computer-Aided Design (TCAD) n
 
 **Two-Phase Research Methodology**
 
-+-----------------------------------------------------------------------------------+
-|               PHASE 1: Multi-Profile Screening & Model Benchmarking               |
-|  - Process Parameter Focus : Cavity Height (H_{\text{cavity}})                    |
-|  - Filling Profiles        : Concave, Convex, Ramp-Up, Ramp-Down (90% Fill)      |
-|  - ML Algorithms Evaluated : RFR, GBR, XGBR, KNN, SVR                             |
-|  - Key Findings            : RFR achieved highest accuracy                        |
-|                              Concave profile exhibited highest device sensitivity  |
-+-----------------------------------------------------------------------------------+
-                                         |
-                                         v
-+-----------------------------------------------------------------------------------+
-|               PHASE 2: Focused Process Variability Modeling                       |
-|  - Locked Configuration   : Random Forest Regression (RFR) + Concave Profile      |
-|  - Process Parameters (2): Cavity Length (L_{\text{cavity}}) & Silicon Body       |
-|                            Thickness (T_{\text{si}})                              |
-|  - Target Metrics         : I_{\text{ON}} Sensitivity & V_{\text{th}} Sensitivity |
-|  - Outcome                : Precise sensitivity attribution & fast surrogate      |
-|                            estimation                                             |
-+-----------------------------------------------------------------------------------+
 
+<img width="707" height="413" alt="image" src="https://github.com/user-attachments/assets/e0087730-dbe0-43b2-9f45-1570526cd55a" />
 
 
 **Phase 1: Device Architecture, Filling Profiles & Model Benchmarking**
