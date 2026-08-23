@@ -18,28 +18,7 @@ By replacing computationally intensive Technology Computer-Aided Design (TCAD) n
 
 The proposed biosensor incorporates a Germanium–Silicon ($\text{Ge}$–$\text{Si}$) heterojunction with a $100\text{ nm}$ gate overlap on the source to promote line-tunneling transport perpendicular to the gate interface.
 
-                       +-------------------+-------------------+
-                       |    Top Gate Metal |  Top Gate Metal   |
-                       +-------------------+-------------------+
-                       |    Biomolecules   |       HfO2        |
-                       |    (Nano-cavity)  |   (High-k Ox)     |
-                       +-------------------+-------------------+
-                       |        SiO2       |       SiO2        |
-+----------------------+-------------------+-------------------+----------------------+
-|                      |                                       |                      |
-|    p+ Source (Ge)    |          p- Channel (Si)              |    n+ Drain (Si)     |
-|   N_A = 1e20 cm^-3   |         N_A = 1e15 cm^-3              |   N_D = 1e20 cm^-3   |
-|                      |                                       |                      |
-+----------------------+-------------------+-------------------+----------------------+
-                       |        SiO2       |       SiO2        |
-                       +-------------------+-------------------+
-                       |    Biomolecules   |       HfO2        |
-                       |    (Nano-cavity)  |   (High-k Ox)     |
-                       +-------------------+-------------------+
-                       | Bottom Gate Metal | Bottom Gate Metal |
-                       +-------------------+-------------------+
-
-
+<img width="745" height="521" alt="image" src="https://github.com/user-attachments/assets/380dce36-1667-4cd7-a335-df90de91e8d5" />
 
 Source Region: Heavily doped $\text{p}^+$ Germanium ($N_A = 1 \times 10^{20}\text{ cm}^{-3}$), $L_s = 200\text{ nm}$
 
