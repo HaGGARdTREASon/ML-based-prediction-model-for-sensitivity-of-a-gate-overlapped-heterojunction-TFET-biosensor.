@@ -1,6 +1,6 @@
-**Predictive Modeling and Process Variability Framework for Gate-Overlapped Dielectric-Modulated Heterojunction TFET Biosensors**
+#Predictive Modeling and Process Variability Framework for Gate-Overlapped Dielectric-Modulated Heterojunction TFET Biosensors#
 
-*Executive Overview*
+**Executive Overview**
 
 This repository contains the complete simulation framework, dataset preprocessing pipeline, machine learning benchmarking suite, and process variability evaluation tools for a Gate-Overlapped Dielectric-Modulated Heterojunction Tunnel Field-Effect Transistor ($\text{DM H-TFET}$) Biosensor.
 
